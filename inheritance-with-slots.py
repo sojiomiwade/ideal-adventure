@@ -1,27 +1,39 @@
-class Mammal:
-    def __init__(self,mamm_glands='white') -> None:
-        self.mamm_glands=mamm_glands
+class Animal:
+    def __init__(self,movespeed: int=0) -> None:
+        self.movespeed=movespeed
 
-class LandAnimal:
-    def __init__(self,lungs=2) -> None:
-        self.lungs=lungs
-
-class Dog(LandAnimal,Mammal):
-    def __init__(self,bark) -> None:
+class Mammal(Animal):
+    def __init__(self,breastsize: int=0) -> None:
         super().__init__()
-        # print('super',a.legs)
-        self.bark=bark
+        self.breastsize=breastsize
+
+class WingedAnimal(Animal):
+    def __init__(self, wingcount: int=0) -> None:
+        super().__init__()
+        self.wingcount=wingcount
+        
+class Bat(Mammal,WingedAnimal):
+    def __init__(self,chiro: str) -> None:
+        super().__init__()
+        self.chiro=chiro
 
         try:
-            self.mamm_glands
-        except AttributeError:
-            print('no mamm glands')
+            self.chiro
+        except:
+            print('no chiro')
 
         try:
-            self.lungs
-        except AttributeError:
-            print('no lungs')
+            self.wingcount
+        except:
+            print('no wingcount')
 
-d=Dog(bark='loud')
-# print(d.bark)
-# print(type(super(Dog,d)))
+        try:
+            self.movespeed
+        except:
+            print('no movespeed')
+
+        try:
+            self.breastsize
+        except:
+            print('no breastsize')
+Bat('chiro-a')
