@@ -13,9 +13,12 @@ class WingedAnimal(Animal):
         self.wingcount=wingcount
         
 class Bat(Mammal,WingedAnimal):
-    def __init__(self,chiro: str) -> None:
+# class Bat:
+    __slots__=('chiro','bigear')
+    def __init__(self,chiro: str,bigear: bool) -> None:
         super().__init__()
         self.chiro=chiro
+        self.bigear=bigear
 
         try:
             self.chiro
@@ -36,4 +39,30 @@ class Bat(Mammal,WingedAnimal):
             self.breastsize
         except:
             print('no breastsize')
-Bat('chiro-a')
+b=Bat('chiro-a',True)
+print(b.chiro)
+b.chiro='chiro-b'
+print(b.chiro)
+b.chiro='chiro-c'
+b.bigear='43'
+# b.fish=42
+# print(b.fish)
+# print(b.__dict__, type(b))
+print(type(b))
+
+'''
+>>> Bat
+__main__.Bat
+
+>>> Bat.mro()
+[__main__.Bat, object]
+
+>>> Bat.__mro__
+(__main__.Bat, object)
+
+>>> type(b)
+__main__.Bat
+
+>>> type(b).__mro__
+(__main__.Bat, object)
+'''
